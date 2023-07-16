@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Form, Label, Input, AddContactButton } from './ContactForm.styled';
 import { useState } from 'react';
 
-export function ContactForm({ addContact }) {
+export function ContactForm({ handleAddContact }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -18,7 +18,7 @@ export function ContactForm({ addContact }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    addContact(name, number);
+    handleAddContact(name, number);
     setName('');
     setNumber('');
   };
@@ -57,5 +57,5 @@ export function ContactForm({ addContact }) {
 }
 
 ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
+  handleAddContact: PropTypes.func.isRequired,
 };
