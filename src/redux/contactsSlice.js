@@ -11,11 +11,6 @@ const contactsSlice = createSlice({
     isDeleting: false,
     contactId: null,
   },
-  reducers: {
-    setContactID: (state, action) => {
-      state.contactId = action.payload;
-    },
-  },
   extraReducers: {
     [fetchContacts.pending](state) {
       state.isFetching = true;
@@ -62,4 +57,3 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
-export const { setContactID } = contactsSlice.actions;

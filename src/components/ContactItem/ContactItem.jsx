@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 import { Li, Button } from './ContactItem.styled';
-import { selectContactId, selectisDeleting } from 'redux/selectors';
+import { selectisDeleting } from 'redux/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
-import { setContactID } from 'redux/contactsSlice';
+import { useState } from 'react';
 
 export function ContactItem({ item }) {
   const isDeleting = useSelector(selectisDeleting);
-  const ID = useSelector(selectContactId);
+  // const ID = useSelector(selectContactId);
+  const [id, setID] = useState(null);
 
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(setContactID(item.id));
+    setID(item.id);
     dispatch(deleteContact(item.id));
   };
 
@@ -22,7 +23,7 @@ export function ContactItem({ item }) {
         {item.name}: {item.phone}
       </span>
       <Button type="button" onClick={handleDelete} disabled={isDeleting}>
-        {item.id === ID && isDeleting ? <>Deleting...</> : <>Delete</>}
+        {item.id === id && isDeleting ? <>Deleting...</> : <>Delete</>}
       </Button>
     </Li>
   );
