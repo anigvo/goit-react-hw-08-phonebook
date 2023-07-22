@@ -9,7 +9,7 @@ const contactsSlice = createSlice({
     isFetching: false,
     isAdding: false,
     isDeleting: false,
-    contactId: 1,
+    contactId: null,
   },
   reducers: {
     setContactID: (state, action) => {
