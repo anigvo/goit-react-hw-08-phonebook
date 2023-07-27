@@ -22,5 +22,11 @@ const Wrapper = styled.div`
   padding: 20px;
 `;
 
-export { H1, H2, Container, Wrapper };
+const LayoutDiv = styled.div`
+maxWidth: 960px;
+margin: 0 auto;
+padding: 0 16px;
+`;
+
+export { H1, H2, Container, Wrapper, LayoutDiv };
 

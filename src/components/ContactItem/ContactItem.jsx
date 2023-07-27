@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 import { Li, Button } from './ContactItem.styled';
 import { selectisDeleting } from 'redux/selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import { useState } from 'react';
 
 export function ContactItem({ item }) {
   const isDeleting = useSelector(selectisDeleting);
-  // const ID = useSelector(selectContactId);
   const [id, setID] = useState(null);
 
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ export function ContactItem({ item }) {
   return (
     <Li key={item.id}>
       <span>
-        {item.name}: {item.phone}
+        {item.name}: {item.number}
       </span>
       <Button type="button" onClick={handleDelete} disabled={isDeleting}>
         {item.id === id && isDeleting ? <>Deleting...</> : <>Delete</>}
@@ -33,6 +32,6 @@ ContactItem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
   }).isRequired,
 };

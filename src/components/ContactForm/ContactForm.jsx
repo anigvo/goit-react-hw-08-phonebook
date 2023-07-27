@@ -2,13 +2,13 @@ import { Form, Label, Input, AddContactButton } from './ContactForm.styled';
 import { useState } from 'react';
 import { selectIsAdding } from 'redux/selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { nanoid } from 'nanoid';
-import { addContact } from 'redux/operations';
+
+import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/selectors';
 
 export function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const isAdding = useSelector(selectIsAdding);
   const contacts = useSelector(selectContacts);
@@ -17,24 +17,22 @@ export function ContactForm() {
     const { name, value } = event.currentTarget;
     if (name === 'name') {
       setName(value);
-    } else if (name === 'phone') {
-      setPhone(value);
+    } else if (name === 'number') {
+      setNumber(value);
     }
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    handleAddContact(name, phone);
+    handleAddContact(name, number);
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   const handleAddContact = (contactName, contactNumber) => {
-    const contactId = nanoid();
     const newContact = {
-      id: contactId,
       name: contactName,
-      phone: contactNumber,
+      number: contactNumber,
     };
     if (
       contacts.find(
@@ -63,15 +61,15 @@ export function ContactForm() {
       </Label>
 
       <Label>
-        Phone
+        Number
         <Input
           type="tel"
-          name="phone"
+          name="number"
           pattern="^(\+?[0-9.\(\)\-\s]*)$"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          title="number number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           onChange={handleInputChange}
-          value={phone}
+          value={number}
         />
       </Label>
 
