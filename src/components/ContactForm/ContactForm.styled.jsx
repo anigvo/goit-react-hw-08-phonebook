@@ -2,22 +2,17 @@ import styled from '@emotion/styled';
 
 const Form = styled.form`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 20px;
+  gap: 30px;
+  justify-content: center;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 20px;
+
+  border: 2px solid rgba(25, 118, 210, 0.5);
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const Label = styled.label`
-  margin-bottom: 20px;
-`;
-
-const Input = styled.input`
-margin-left: 20px`;
-
-const AddContactButton = styled.button`
-cursor: pointer;`;
-
-export { Form, Label, Input, AddContactButton };
+export { Form };

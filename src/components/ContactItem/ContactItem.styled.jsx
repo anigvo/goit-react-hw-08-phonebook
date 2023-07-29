@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 
+import Button from '@mui/material/Button';
+
 const Li = styled.li`
+  color: #444444;
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
@@ -10,8 +13,11 @@ const Li = styled.li`
   }
 `;
 
-const Button = styled.button`
-cursor: pointer;
+const DeleteButton = styled(Button)`
+  &:hover {
+    background: #1976d2;
+    color: white;
+  }
 `;
 
-export { Li, Button };
+export { Li, DeleteButton };

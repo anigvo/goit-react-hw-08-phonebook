@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
 
 const Ul = styled.ul`
-  padding: 0px;
-  text-align: left;
-  list-style: none;
-  margin: 0px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
   margin-top: 20px;
 `;
 

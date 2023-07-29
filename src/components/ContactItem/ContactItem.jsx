@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Li, Button } from './ContactItem.styled';
+import { Li, DeleteButton } from './ContactItem.styled';
 import { selectisDeleting } from 'redux/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
@@ -21,9 +21,14 @@ export function ContactItem({ item }) {
       <span>
         {item.name}: {item.number}
       </span>
-      <Button type="button" onClick={handleDelete} disabled={isDeleting}>
+      <DeleteButton
+        variant="outlined"
+        type="button"
+        onClick={handleDelete}
+        disabled={isDeleting}
+      >
         {item.id === id && isDeleting ? <>Deleting...</> : <>Delete</>}
-      </Button>
+      </DeleteButton>
     </Li>
   );
 }

@@ -18,12 +18,12 @@ const Contacts = () => {
 
   return (
     <Container>
-      <H1>Phonebook</H1>
+      <H1>Add contact to phonebook</H1>
       <ContactForm />
-      <H2>Contacts</H2>
+      <H2>Your phonebook</H2>
       <Wrapper>
         {isFetching && !error ? (
-          <b>Request in progress...</b>
+          <b>Loading contacts...</b>
         ) : (
           <>
             <ContactFilter />

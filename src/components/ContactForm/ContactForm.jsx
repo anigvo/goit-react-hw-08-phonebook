@@ -1,10 +1,12 @@
-import { Form, Label, Input, AddContactButton } from './ContactForm.styled';
+import { Form } from './ContactForm.styled';
 import { useState } from 'react';
 import { selectIsAdding } from 'redux/selectors';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/selectors';
+
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export function ContactForm() {
   const [name, setName] = useState('');
@@ -46,10 +48,9 @@ export function ContactForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label>
-        Name
-        <Input
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <TextField
+          label="Name"
           type="text"
           name="name"
           pattern="^[A-Za-z\u0080-\uFFFF ']+$"
@@ -58,11 +59,8 @@ export function ContactForm() {
           onChange={handleInputChange}
           value={name}
         />
-      </Label>
-
-      <Label>
-        Number
-        <Input
+        <TextField
+          label="Number"
           type="tel"
           name="number"
           pattern="^(\+?[0-9.\(\)\-\s]*)$"
@@ -71,11 +69,9 @@ export function ContactForm() {
           onChange={handleInputChange}
           value={number}
         />
-      </Label>
-
-      <AddContactButton type="submit" disabled={isAdding}>
-        {isAdding ? <>Adding...</> : <>Add contact</>}
-      </AddContactButton>
-    </Form>
+        <Button type="submit" disabled={isAdding} variant="contained">
+          {isAdding ? <>Adding...</> : <>Add contact</>}
+        </Button>
+      </Form>
   );
 }

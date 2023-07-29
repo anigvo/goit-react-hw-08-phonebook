@@ -1,11 +1,9 @@
+import TextField from '@mui/material/TextField';
 import styled from '@emotion/styled';
 
-const Label = styled.label`
-  margin-bottom: 20px;
+const InputFilter = styled(TextField)`
+  max-width: 480px;
+  width: 100%;
 `;
 
-const Input = styled.input`
-  margin-left: 20px;
-`;
-
-export { Label, Input };
+export { InputFilter };
